@@ -3,11 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const preview = document.getElementById('preview');
   const endpoint = 'https://script.google.com/macros/s/AKfycbzLrmfMPCcX-xecbQveyOOjmITdOld7jgLwvDIGv0lu0MhYuXGukiPv9ecCc8vQ2TLw/exec';
 
+  // Ottenere posizione geolocalizzata
   navigator.geolocation.getCurrentPosition(
     pos => locInput.value = `https://maps.google.com/?q=${pos.coords.latitude},${pos.coords.longitude}`,
     err => locInput.value = 'Posizione non disponibile'
   );
 
+  // Anteprima immagine selezionata
   document.getElementById('photoInput').addEventListener('change', e => {
     const file = e.target.files[0];
     if (!file) return;
@@ -19,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.readAsDataURL(file);
   });
 
+  // Gestione invio form
   document.getElementById('dataForm').addEventListener('submit', async e => {
     e.preventDefault();
     const username = document.getElementById('username').value;
@@ -33,19 +36,22 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         const res = await fetch(endpoint, {
           method: 'POST',
-          body: JSON.stringify({username, timestamp, location, photo}),
-         headers: {
-  'Content-Type': 'text/plain;charset=utf-8'
-}
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8' // evita preflight
+          },
+          body: JSON.stringify({ username, timestamp, location, photo })
+        });
 
         const json = await res.json();
         if (json.status === 'ok') {
-          alert('Dati inviati correttamente!');
+          alert('✅ Dati inviati correttamente!');
           location.reload();
-        } else alert('Errore nell’invio');
+        } else {
+          alert('❌ Errore durante l\'invio dei dati');
+        }
       } catch (err) {
         console.error(err);
-        alert('Errore di rete');
+        alert('❌ Errore di rete');
       }
     };
     reader.readAsDataURL(file);

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const locInput = document.getElementById('location');
   const preview = document.getElementById('preview');
-  const endpoint = 'YOUR_WEB_APP_URL_HERE';
+  const endpoint = 'https://script.google.com/macros/s/AKfycbypKPMkzo_zYzn8ZyInqHk-JwbzZjLQmUec3lhiQlGQYxAGLvZlBYUXNV0-hE9vjtoH/exec';
 
   navigator.geolocation.getCurrentPosition(
     pos => locInput.value = `https://maps.google.com/?q=${pos.coords.latitude},${pos.coords.longitude}`,

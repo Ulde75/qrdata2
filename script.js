@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const res = await fetch(endpoint, {
           method: 'POST',
           body: JSON.stringify({username, timestamp, location, photo}),
-          headers: {'Content-Type': 'application/json'}
+          headers: {'Content-Type': 'text/plain;charset=utf-8'}
         });
         const json = await res.json();
         if (json.status === 'ok') {

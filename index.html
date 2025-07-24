@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Data Collector</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Invio dati via QR</h1>
+  <form id="dataForm">
+    <label>Nome utente:
+      <input type="text" id="username" placeholder="Inserisci nome" required>
+    </label><br>
+    <label>Posizione:
+      <input type="text" id="location" readonly placeholder="Ottengo posizione...">
+    </label><br>
+    <label>Foto:
+      <input type="file" accept="image/*" capture="environment" id="photoInput" required>
+    </label><br>
+    <img id="preview" width="100" style="display:none; margin:10px 0;"><br>
+    <button type="submit">Invia</button>
+  </form>
+  <script src="script.js"></script>
+</body>
+</html>

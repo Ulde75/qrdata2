@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const locInput = document.getElementById('location');
   const preview = document.getElementById('preview');
-  const endpoint = 'https://script.google.com/macros/s/AKfycbwlhNx_xTJwNkbH4_9fMKRtHS76uzJ6s_PvWdhQAMCHGYjKWnzfRXece2CRFOhIEx_U/exec';
+  const endpoint = 'https://script.google.com/macros/s/AKfycbx4DbZUZAOynahYlrUNvFUsl2Cl0wotkHeId3SpIVG7X7YxqCVONXU5G8Q9UVFAU2F1/exec';
 
   navigator.geolocation.getCurrentPosition(
     pos => locInput.value = `https://maps.google.com/?q=${pos.coords.latitude},${pos.coords.longitude}`,
